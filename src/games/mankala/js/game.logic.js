@@ -145,10 +145,27 @@ const logicOfGame = {
      * Funkcja generująca unikalny klucz dla wskazanego stanu.
      */
     generateUniqueKey: undefined,
+     /**
+     * Funkcja oblicza wartość wskazanego węzła gry (np. UCB1). Na podstawie tej wartości MCTS dokona selekcji.
+     */
+     computeMCTSNodeValue(node) {},
+     /**
+      * Funkcja rozgrywa losową symulację startując od zadanego stanu i gracza (state i player) i zwraca 1 jeżeli
+      * symulacja zostaje ostatecznie wygrana przez gracza, -1 jeżeli przez jego przeciwnika, 0 dla remisów.
+      * Proszę zwrócić uwagę na kolejność węzłów!
+      */
+     MCTSPlayOut(node) {},
+     /**
+      * Funkcja przyjmuje na wejście węzeł drzewa MCTS i wybiera najlepszy ruch (kolejny węzeł) wg obranej strategii (np. najwięcej wizyt).
+      */
+     getBestMCTSNode(node) {},
 };
 
 const players = [
     { type: PlayerTypes.ALPHABETA, label: "AlphaBeta (łatwy)", maxDepth: 3, printTree: true },
     { type: PlayerTypes.ALPHABETA, label: "AlphaBeta (średni)", maxDepth: 5, printTree: false },
     { type: PlayerTypes.ALPHABETA, label: "AlphaBeta (trudny)", maxDepth: 7, printTree: false },
+    { type: PlayerTypes.MCTS, label: "MCTS (łatwy)", iterations: 1000 },
+    { type: PlayerTypes.MCTS, label: "MCTS (średni)", iterations: 3000 },
+    { type: PlayerTypes.MCTS, label: "MCTS (trudny)", iterations: 7000 },
 ];
